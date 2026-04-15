@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Personas</h2>
+<a href="/create" class="btn btn-primary mb-3">Nueva Persona</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for p in personas %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.telefono }}</td>
+        <td>{{ p.fecha_nac }}</td>
+        <td>
+            <a href="/edit/{{ p.id }}" class="btn btn-warning">Editar</a>
+            <a href="/delete/{{ p.id }}" class="btn btn-danger">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
